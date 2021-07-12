@@ -9,6 +9,9 @@ dotenv.config({ path: "./config/config.env" });
 // Connect the Database
 connectDB();
 
+// Declaring the app
+const app = express();
+
 // CORS setup
 const corsOptions = {
   origin: process.env.ALLOWED_CLIENTS.split(","),
@@ -16,9 +19,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-// Declaring the app
-const app = express();
 
 // Initializing the PORT
 const PORT = process.env.PORT || 3000;
