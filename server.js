@@ -1,12 +1,21 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require("cors");
 const connectDB = require("./config/db");
 // Setting up config.env file for all the environment variables
 dotenv.config({ path: "./config/config.env" });
 
 // Connect the Database
 connectDB();
+
+// CORS setup
+const corsOptions = {
+  origin: process.env.ALLOWED_CLIENTS.split(","),
+  // ['http://localhost:3000', 'http://localhost:8000']
+};
+
+app.use(cors(corsOptions));
 
 // Declaring the app
 const app = express();
